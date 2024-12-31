@@ -91,3 +91,69 @@ src/
     <li><code>npm run start:dev</code>: Start the development server</li>
     <li><code>npm run build</code>: Build the application for production</li>
   </ul>
+
+    <h2>API Design</h2>
+  <h3>Product Management</h3>
+  <ul>
+    <li><strong>GET /products</strong>: Retrieve a list of products</li>
+    <li><strong>POST /products</strong>: Create a new product</li>
+    <pre>
+      <code>
+Payload:
+{
+  "name": "Product Name",
+  "description": "Product description",
+  "price": 100,
+  "vendorId": "vendor-id"
+}
+      </code>
+    </pre>
+    <li><strong>POST /products/:id</strong>: Update product details</li>
+    <pre>
+      <code>
+Payload:
+{
+  "name": "Updated Product Name",
+  "description": "Updated description",
+  "price": 150
+}
+      </code>
+    </pre>
+  </ul>
+
+  <h3>Order Management</h3>
+  <ul>
+    <li><strong>POST /orders</strong>: Place a new order</li>
+    <pre>
+      <code>
+Payload:
+{
+  "customerId": "customer-id",
+  "items": [
+    {
+      "productId": "product-id",
+      "quantity": 2
+    }
+  ],
+  "addressId": "address-id"
+}
+      </code>
+    </pre>
+    <li><strong>GET /orders/:id</strong>: Retrieve order details</li>
+  </ul>
+
+  <h3>Cart Management</h3>
+  <ul>
+    <li><strong>POST /cart</strong>: Add an item to the cart</li>
+    <pre>
+      <code>
+Payload:
+{
+  "customerId": "customer-id",
+  "productId": "product-id",
+  "quantity": 1
+}
+      </code>
+    </pre>
+    <li><strong>GET /cart/:customerId</strong>: Get items in the cart</li>
+  </ul>
