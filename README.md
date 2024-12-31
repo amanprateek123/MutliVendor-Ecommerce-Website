@@ -92,7 +92,7 @@ src/
     <li><code>npm run build</code>: Build the application for production</li>
   </ul>
 
-    <h2>API Design</h2>
+  <h2>API Design</h2>
   <h3>Product Management</h3>
   <ul>
     <li><strong>GET /products</strong>: Retrieve a list of products</li>
@@ -152,6 +152,16 @@ Payload:
   "customerId": "customer-id",
   "productId": "product-id",
   "quantity": 1
+}
+      </code>
+    </pre>
+    <li><strong>POST /cart</strong>: remove item from the cart</li>
+    <pre>
+      <code>
+Payload:
+{
+  "customerId": "customer-id",
+  "productId": "product-id",
 }
       </code>
     </pre>
