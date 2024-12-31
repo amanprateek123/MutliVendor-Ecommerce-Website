@@ -1,73 +1,138 @@
-<p align="center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MultiVendor Ecommerce Backend Setup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #4a4a4a;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>MultiVendor Ecommerce Backend Setup</h1>
+    <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
+  <p>
+    This repository contains a <strong>NestJS backend</strong> for a multi-vendor e-commerce platform, integrated with <strong>PostgreSQL</strong>.
+    The system includes various modules such as product management, order management, payment processing, and shipment management.
+  </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+  <h2>Prerequisites</h2>
+  <p>Before setting up the application, ensure you have the following installed:</p>
+  <ul>
+    <li><strong>Node.js</strong> (v14 or higher) - <a href="https://nodejs.org/">Download here</a></li>
+    <li><strong>PostgreSQL</strong> (v12 or higher) - <a href="https://www.postgresql.org/download/">Download here</a></li>
+    <li><strong>npm</strong> (Node Package Manager) - Comes with Node.js by default</li>
+  </ul>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+  <h2>Steps to Set Up the Project</h2>
+  <h3>1. Clone the Repository</h3>
+  <pre>
+    <code>
+git clone https://github.com/amanprateek123/MutliVendor-Ecommerce-Website.git
+cd repo-name
+    </code>
+  </pre>
 
-## Description
+  <h3>2. Install Dependencies</h3>
+  <pre>
+    <code>
+npm install
+    </code>
+  </pre>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+  <h3>3. Set Up PostgreSQL Database</h3>
+  <p><strong>Option 1: Set up PostgreSQL Locally</strong></p>
+  <pre>
+    <code>
+# Log into PostgreSQL
+psql -U postgres
 
-## Installation
+# Create a new database and user
+CREATE DATABASE multi_vendor_ecommerce;
+CREATE USER your_database_user WITH ENCRYPTED PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE multi_vendor_ecommerce TO your_database_user;
+    </code>
+  </pre>
+  <p>Update the PostgreSQL connection settings in the <code>.env</code> file.</p>
+  <p>Update the <code>.env</code> file:</p>
+  <pre>
+    <code>
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_password
+DB_NAME=multi_vendor_ecommerce
+DB_SYNC=true
+    </code>
+  </pre>
 
-```bash
-$ npm install
-```
+  <h3>6. Start the Application</h3>
+  <pre>
+    <code>
+npm run start:dev
+    </code>
+  </pre>
 
-## Running the app
+  <h3>7. Test the API</h3>
+  <p>You can use tools like <a href="https://www.postman.com/">Postman</a> or <a href="https://insomnia.rest/">Insomnia</a> to interact with the API.</p>
 
-```bash
-# development
-$ npm run start
+  <h2>Project Structure</h2>
+  <pre>
+    <code>
+src/
+├── modules/
+│   ├── cart/
+│   ├── user/
+│   ├── product/
+│   ├── order/
+│   ├── payment/
+│   └── shipment/
+├── app.module.ts
+├── main.ts
+├── .env
+└── tsconfig.json
+    </code>
+  </pre>
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+  <h2>Useful Commands</h2>
+  <ul>
+    <li><code>npm run start:dev</code>: Start the development server</li>
+    <li><code>npm run build</code>: Build the application for production</li>
+  </ul>
+</body>
+</html>
