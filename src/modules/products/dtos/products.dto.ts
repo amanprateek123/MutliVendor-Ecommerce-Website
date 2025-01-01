@@ -18,8 +18,7 @@ export class CreateProductDto {
   @IsArray()
   image?: string[];
 
-  @IsString()
-  category: string;
+  category: any;
 
   @IsString()
   created_by: string;
@@ -47,7 +46,6 @@ export class UpdateProductDto {
   image?: string[];
 
   @IsOptional()
-  @IsString()
-  category?: string;
+  category?: any;
 }
 

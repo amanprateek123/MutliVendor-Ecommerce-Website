@@ -1,5 +1,6 @@
 import { Vendor } from 'src/modules/user/schemas/vendor.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn, Index } from 'typeorm';
+import { Categories } from './categories.entity';
 
 @Entity()
 @Index(["name", "created_at"])
@@ -23,9 +24,9 @@ export class Product {
   @Column('simple-array', { nullable: true })
   image: string[];
 
-  @Column()
+  @ManyToOne(() => Categories, (category) => category.products)
   @Index()
-  category: string;
+  category: Categories;
 
   @ManyToMany(() => Vendor, (vendor) => vendor.products)
   @JoinTable()
